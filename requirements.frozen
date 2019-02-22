@@ -1,0 +1,3 @@
+celery==4.2.1
+git+https://github.com/NewKnowledge/signal-db-dev.git@1.0.1#egg=signal_db
+git+https://github.com/NewKnowledge/nk-sql.git@1.0.2#egg=nk-sql

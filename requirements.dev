@@ -1,1 +1,3 @@
-git+https://github.com/NewKnowledge/signal-db-dev.git@v1.0.1#egg=signal_db
+celery
+git+https://github.com/NewKnowledge/signal-db-dev.git
+git+https://github.com/NewKnowledge/nk-sql.git
