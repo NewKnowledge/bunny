@@ -1,0 +1,44 @@
+
+serviceName: bunny
+
+# Non-sensitive envVar config
+envVars:
+  DATADOG_ENV: dev
+  DATADOG_SERVICE_NAME: bunny
+  
+# Sensitive config from 1Password
+# secretEnvs:
+#   - secretName: 
+#     type: none
+#     map:
+#       PROJECT_ID: PROJECT_ID
+#       PRIVATE_KEY_ID: PRIVATE_KEY_ID
+#       PRIVATE_KEY: PRIVATE_KEY
+#   - type: db
+#     secretName: clam-dev-db
+#     hostVar: POSTGRES_HOST
+#     nameVar: POSTGRES_DB
+#     userVar: POSTGRES_USER
+#     passVar: POSTGRES_PASSWORD
+
+
+image:
+  name: newknowledge.azurecr.io/bunny
+  tag: dev
+
+replicas: 1
+
+# The default resources are commented below.
+# Uncomment and change if needed
+# resources:
+#   requests:
+#     cpu: 100m
+#     memory: 128Mi
+#   limits:
+#     cpu: 200m
+#     memory: 256Mi
+
+namespace: "quorum-dev"
+
+# cronSchedule: "30 * * * *"
+concurrencyPolicy: Forbid
