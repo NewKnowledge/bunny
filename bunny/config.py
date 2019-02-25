@@ -1,5 +1,4 @@
-from datetime import datetime
-from datetime import timedelta
+from datetime import datetime, timezone, timedelta
 import os
 
 # Task Config
@@ -8,7 +7,7 @@ BROKER_URL = os.environ.get('REDIS_BROKER_URL', 'redis://localhost:6379/0')
 # Time Config
 OLD_WINDOW_LENGTH = timedelta(days=30)
 NEW_WINDOW_LENGTH = timedelta(hours=1)
-CURRENT_HOUR = datetime.utcnow().replace(minute=0, second=0, microsecond=0)
+CURRENT_HOUR = datetime.now(timezone.utc).replace(minute=0, second=0, microsecond=0)
 PIVOT_TIME = CURRENT_HOUR - NEW_WINDOW_LENGTH
 OLD_WINDOW_BEGINNING = PIVOT_TIME - OLD_WINDOW_LENGTH
 OLD_WINDOW_END = NEW_WINDOW_BEGINNING = PIVOT_TIME
@@ -29,5 +28,7 @@ SNOWFLAKE_CONFIG = {
     "name": SNOWFLAKE_NAME,
     "schema": SNOWFLAKE_SCHEMA,
     "warehouse": SNOWFLAKE_WAREHOUSE,
-    "role": SNOWFLAKE_ROLE
+    "role": SNOWFLAKE_ROLE,
+    "paramstyle": "qmark",
+    "query_tag": "bunny"
 }
